@@ -2,24 +2,24 @@ import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_strings.dart';
 
 class OnBoardingModel {
-  final String image;
+  final String imagePath;
   final String title;
-  final String description;
+  final String subTitle;
   OnBoardingModel(
-      {required this.image, required this.title, required this.description});
+      {required this.imagePath, required this.title, required this.subTitle});
 
   static List<OnBoardingModel> onBoardingScreen = [
     OnBoardingModel(
-        image: AppAssets.onBoarding1,
+        imagePath: AppAssets.onBoarding1,
         title: AppStrings.onBoardingTitleOne,
-        description: AppStrings.onBoardingSubTitleOne),
+        subTitle: AppStrings.onBoardingSubTitleOne),
     OnBoardingModel(
-        image: AppAssets.onBoarding2,
+        imagePath: AppAssets.onBoarding2,
         title: AppStrings.onBoardingTitleTwo,
-        description: AppStrings.onBoardingSubTitleTwo),
+        subTitle: AppStrings.onBoardingSubTitleTwo),
     OnBoardingModel(
-        image: AppAssets.onBoarding3,
+        imagePath: AppAssets.onBoarding3,
         title: AppStrings.onBoardingTitleThree,
-        description: AppStrings.onBoardingSubTitleThree),
+        subTitle: AppStrings.onBoardingSubTitleThree),
   ];
 }

@@ -49,7 +49,8 @@ class OnBoardingScreen extends StatelessWidget {
                     height: 16,
                   ),
                   //Image
-                  Image.asset(OnBoardingModel.onBoardingScreen[index].image),
+                  Image.asset(
+                      OnBoardingModel.onBoardingScreen[index].imagePath),
                   const SizedBox(
                     height: 16,
                   ),
@@ -80,7 +81,7 @@ class OnBoardingScreen extends StatelessWidget {
                   // onboarding Subtitle String
                   Text(
                       textAlign: TextAlign.center,
-                      OnBoardingModel.onBoardingScreen[index].description,
+                      OnBoardingModel.onBoardingScreen[index].subTitle,
                       style: Theme.of(context)
                           .textTheme
                           .displayMedium!
