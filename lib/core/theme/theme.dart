@@ -7,7 +7,7 @@ ThemeData getAppTheme() {
     primaryColor: AppColors.primary,
     // scaffold background color
     scaffoldBackgroundColor: AppColors.background,
-    // appbar theme
+    // appBar theme
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.background,
       centerTitle: true,

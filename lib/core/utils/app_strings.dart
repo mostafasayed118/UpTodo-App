@@ -39,5 +39,5 @@ class AppStrings {
   static const String cancel = 'Cancel';
 
   // global
-  static const String onboarding = 'onboarding';
+  static const String onboardingKey = 'onboarding';
 }

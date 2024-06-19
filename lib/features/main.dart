@@ -9,5 +9,4 @@ void main() async {
   setup();
   await sl<CacheHelper>().init();
   runApp(const ToDoApp());
-  // runApp(const MyApp());
 }

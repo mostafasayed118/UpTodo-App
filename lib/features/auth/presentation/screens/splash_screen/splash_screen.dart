@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
 //presentation
   void navigator() {
     bool isVisted =
-        sl<CacheHelper>().getData(key: AppStrings.onboarding) ?? false;
+        sl<CacheHelper>().getData(key: AppStrings.onboardingKey) ?? false;
     Future.delayed(
       const Duration(seconds: 3),
       () {

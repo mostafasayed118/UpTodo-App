@@ -1,12 +1,17 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:todo_app/core/database/cache/cache_helper.dart';
 import 'package:todo_app/core/services/service.locator.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_strings.dart';
+import 'package:todo_app/core/widget/custom_elevated_button.dart';
+import 'package:todo_app/core/widget/custom_text_button.dart';
 import 'package:todo_app/features/auth/data/model/on_boarding_model.dart';
 import 'package:todo_app/features/task/presentation/screens/home_page_screen.dart';
+
+import '../../../../../core/common/commons.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   OnBoardingScreen({Key? key}) : super(key: key);
@@ -27,21 +32,18 @@ class OnBoardingScreen extends StatelessWidget {
                   index != 2
                       ? Align(
                           alignment: Alignment.centerLeft,
-                          child: TextButton(
+                          child: CustomTextButton(
                             onPressed: () {
                               controller.jumpToPage(2);
                             },
-                            child: Text(
-                              AppStrings.skip,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .displaySmall
-                                  ?.copyWith(
-                                    color: AppColors.white.withOpacity(0.44),
-                                  ),
-                            ),
-                          ),
-                        )
+                            text: AppStrings.skip,
+                            style: Theme.of(context)
+                                .textTheme
+                                .displaySmall
+                                ?.copyWith(
+                                  color: AppColors.white.withOpacity(0.44),
+                                ),
+                          ))
                       : const SizedBox(
                           height: 50,
                         ),
@@ -87,79 +89,54 @@ class OnBoardingScreen extends StatelessWidget {
                           .displayMedium!
                           .copyWith(fontSize: 16)),
                   const SizedBox(
-                    height: 80,
+                    height: 180,
                   ),
                   Row(
                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       index != 0
-                          ? TextButton(
+                          ? CustomTextButton(
                               onPressed: () {
                                 controller.previousPage(
                                     duration: const Duration(seconds: 1),
                                     curve: Curves.fastLinearToSlowEaseIn);
                               },
-                              child: Text(
-                                AppStrings.back,
-                                style: Theme.of(context).textTheme.displaySmall,
-                              ),
-                            )
+                              text: AppStrings.back)
                           : Container(),
                       const Spacer(),
                       index != 2
-                          ? ElevatedButton(
-                              style:
-                                  Theme.of(context).elevatedButtonTheme.style,
+                          ? CustomElevatedButton(
                               onPressed: () {
                                 controller.nextPage(
                                   duration: const Duration(seconds: 1),
                                   curve: Curves.easeInOut,
                                 );
                               },
-                              child: Text(
-                                AppStrings.next,
-                                style: GoogleFonts.lato(
-                                  fontSize: 16,
-                                  color: AppColors.white,
-                                ),
-                              ),
-                            )
-                          : ElevatedButton(
-                              style:
-                                  Theme.of(context).elevatedButtonTheme.style,
+                              text: AppStrings.next)
+                          : CustomElevatedButton(
                               onPressed: () async {
                                 // navigator();
                                 await sl<CacheHelper>()
                                     .saveData(
-                                        key: AppStrings.onboarding, value: true)
+                                        key: AppStrings.onboardingKey,
+                                        value: true)
                                     .then(
                                   (value) {
-                                    print('onboarding saved');
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return const HomePageScreen();
-                                        },
-                                      ),
+                                    log('onboarding saved');
+                                    navigate(
+                                      context: context,
+                                      screen: const HomePageScreen(),
                                     );
                                   },
                                 ).catchError(
                                   (error) {
-                                    print(
+                                    log(
                                       error.toString(),
                                     );
                                   },
                                 );
                               },
-                              child: Text(
-                                AppStrings.getStarted,
-                                style: GoogleFonts.lato(
-                                  fontSize: 16,
-                                  color: AppColors.white,
-                                ),
-                              ),
-                            ),
+                              text: AppStrings.getStarted)
                     ],
                   ),
                 ],
