@@ -9,7 +9,7 @@ import 'package:todo_app/core/utils/app_strings.dart';
 import 'package:todo_app/core/widget/custom_elevated_button.dart';
 import 'package:todo_app/core/widget/custom_text_button.dart';
 import 'package:todo_app/features/auth/data/model/on_boarding_model.dart';
-import 'package:todo_app/features/task/presentation/screens/home_page_screen.dart';
+import 'package:todo_app/features/task/presentation/screens/home_page/home_page_screen.dart';
 
 import '../../../../../core/common/commons.dart';
 

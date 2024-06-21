@@ -23,7 +23,7 @@ class AppStrings {
   static const String noTaskSubTitle = 'Tap + to add your tasks';
   //add task screen
   static const String addTask = 'Add Task';
-  static const String title = 'title';
+  static const String title = 'Title';
   static const String titleHint = 'Enter title here';
   static const String note = 'Note';
   static const String noteHint = 'Enter note here';

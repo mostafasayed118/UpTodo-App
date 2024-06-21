@@ -5,7 +5,7 @@ import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_strings.dart';
 import 'package:todo_app/features/auth/presentation/screens/on_boarding_screen/on_boarding_screen.dart';
-import 'package:todo_app/features/task/presentation/screens/home_page_screen.dart';
+import 'package:todo_app/features/task/presentation/screens/home_page/home_page_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

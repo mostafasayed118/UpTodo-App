@@ -35,10 +35,23 @@ ThemeData getAppTheme() {
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primary,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(8),
         ),
       ),
     ),
+    inputDecorationTheme: InputDecorationTheme(
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        hintStyle: GoogleFonts.lato(
+          fontSize: 18,
+          color: AppColors.white,
+        ),
+        fillColor: AppColors.lightBlack,
+        filled: true),
   );
 }
 
