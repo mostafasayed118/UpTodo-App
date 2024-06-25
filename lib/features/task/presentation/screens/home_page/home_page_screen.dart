@@ -120,7 +120,7 @@ class HomePageScreen extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            navigate(context: context, screen: const AddTaskScreen());
+            navigate(context: context, screen:  AddTaskScreen());
           },
           backgroundColor: AppColors.primary,
           shape: const CircleBorder(),

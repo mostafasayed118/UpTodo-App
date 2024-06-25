@@ -3,6 +3,6 @@ import 'package:todo_app/core/database/cache/cache_helper.dart';
 
 final sl = GetIt.instance; // sl =>> service locator
 
-void setup() {
+void setup() async {
   sl.registerLazySingleton<CacheHelper>(() => CacheHelper());
 }
