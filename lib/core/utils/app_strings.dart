@@ -30,6 +30,7 @@ class AppStrings {
   static const String date = 'Date';
   static const String startTime = 'Start Time';
   static const String endTime = 'End Time';
+  static const String colors = 'Colors';
   static const String createTask = 'Create Task';
 //edit task screen
   static const String todo = 'TODO';

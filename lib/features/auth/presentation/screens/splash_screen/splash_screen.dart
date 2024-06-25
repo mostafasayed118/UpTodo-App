@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app/core/database/cache/cache_helper.dart';
 import 'package:todo_app/core/services/service.locator.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
@@ -8,7 +9,7 @@ import 'package:todo_app/features/auth/presentation/screens/on_boarding_screen/o
 import 'package:todo_app/features/task/presentation/screens/home_page/home_page_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -49,13 +50,13 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(AppAssets.logo),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: 20.h,
             ),
             Text(
               AppStrings.appName,
               style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                    fontSize: 40,
+                    fontSize: 40.sp,
                   ),
             ),
           ],

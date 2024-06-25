@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:todo_app/core/common/commons.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
@@ -12,7 +13,7 @@ import 'package:todo_app/core/widget/custom_elevated_button.dart';
 import '../add_task/add_task_screen.dart';
 
 class HomePageScreen extends StatelessWidget {
-  const HomePageScreen({Key? key}) : super(key: key);
+  const HomePageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +31,18 @@ class HomePageScreen extends StatelessWidget {
                 ),
                 style: Theme.of(context).textTheme.displayLarge,
               ),
-              const SizedBox(
-                height: 12,
+              SizedBox(
+                height: 12.h,
               ),
               Text(AppStrings.today,
                   style: Theme.of(context).textTheme.displayLarge),
-              const SizedBox(
-                height: 8,
+              SizedBox(
+                height: 8.h,
               ),
               DatePicker(
                 DateTime.now(),
-                width: 62,
-                height: 94,
+                width: 62.w,
+                height: 94.h,
                 initialSelectedDate: DateTime.now(),
                 selectionColor: AppColors.primary,
                 selectedTextColor: AppColors.white,
@@ -62,8 +63,8 @@ class HomePageScreen extends StatelessWidget {
                   log(date.toString());
                 },
               ),
-              const SizedBox(
-                height: 24,
+              SizedBox(
+                height: 24.h,
               ),
               InkWell(
                   onTap: () {
@@ -71,37 +72,37 @@ class HomePageScreen extends StatelessWidget {
                       context: context,
                       builder: (context) {
                         return Container(
-                          height: 240,
-                          width: double.infinity,
+                          height: 240.h,
+                          width: double.infinity.w,
                           padding: const EdgeInsets.all(24),
                           color: AppColors.deepGrey,
                           child: Column(
                             children: [
                               SizedBox(
-                                height: 48,
-                                width: double.infinity,
+                                height: 48.h,
+                                width: double.infinity.w,
                                 child: CustomElevatedButton(
                                     color: AppColors.primary,
                                     onPressed: () {},
                                     text: AppStrings.taskCompleted),
                               ),
-                              const SizedBox(
-                                height: 24,
+                              SizedBox(
+                                height: 24.h,
                               ),
                               SizedBox(
-                                height: 48,
-                                width: double.infinity,
+                                height: 48.h,
+                                width: double.infinity.w,
                                 child: CustomElevatedButton(
                                     color: AppColors.red,
                                     onPressed: () {},
                                     text: AppStrings.deleteTask),
                               ),
-                              const SizedBox(
-                                height: 24,
+                              SizedBox(
+                                height: 24.h,
                               ),
                               SizedBox(
-                                height: 48,
-                                width: double.infinity,
+                                height: 48.h,
+                                width: double.infinity.w,
                                 child: CustomElevatedButton(
                                     color: AppColors.primary,
                                     onPressed: () {},
@@ -119,7 +120,7 @@ class HomePageScreen extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            navigate(context: context, screen:  AddTaskScreen());
+            navigate(context: context, screen: const AddTaskScreen());
           },
           backgroundColor: AppColors.primary,
           shape: const CircleBorder(),
@@ -137,16 +138,16 @@ class HomePageScreen extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          Image.asset(AppAssets.noTask, width: 277, height: 277),
-          const SizedBox(
-            height: 10,
+          Image.asset(AppAssets.noTask, width: 277.w, height: 277.h),
+          SizedBox(
+            height: 10.h,
           ),
           Text(
             AppStrings.noTaskTitle,
             style: Theme.of(context).textTheme.displayMedium,
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           Text(
             AppStrings.noTaskSubTitle,
@@ -166,9 +167,9 @@ class TaskComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 128,
+      height: 128.h,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r),
         color: AppColors.red,
       ),
       margin: const EdgeInsets.only(bottom: 24),
@@ -184,8 +185,8 @@ class TaskComponent extends StatelessWidget {
                     'Task 1',
                     style: Theme.of(context).textTheme.displayLarge,
                   ),
-                  const SizedBox(
-                    height: 8,
+                  SizedBox(
+                    height: 8.h,
                   ),
                   Row(
                     // mainAxisAlignment: MainAxisAlignment.start,
@@ -194,8 +195,8 @@ class TaskComponent extends StatelessWidget {
                         Icons.timer_outlined,
                         color: AppColors.white,
                       ),
-                      const SizedBox(
-                        width: 8,
+                      SizedBox(
+                        width: 8.w,
                       ),
                       Text(
                         '09:00 AM - 10:00 AM',
@@ -203,8 +204,8 @@ class TaskComponent extends StatelessWidget {
                       )
                     ],
                   ),
-                  const SizedBox(
-                    height: 8,
+                  SizedBox(
+                    height: 8.h,
                   ),
                   Text(
                     'Learn Dart',
@@ -214,8 +215,8 @@ class TaskComponent extends StatelessWidget {
               ),
             ),
             Container(
-              width: 1.5,
-              height: 75,
+              width: 1.5.w,
+              height: 75.h,
               margin: const EdgeInsets.symmetric(horizontal: 9),
               decoration: BoxDecoration(
                 color: AppColors.white.withOpacity(0.44),

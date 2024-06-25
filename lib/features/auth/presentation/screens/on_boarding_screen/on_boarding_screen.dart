@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:todo_app/core/database/cache/cache_helper.dart';
 import 'package:todo_app/core/services/service.locator.dart';
@@ -14,7 +15,7 @@ import 'package:todo_app/features/task/presentation/screens/home_page/home_page_
 import '../../../../../core/common/commons.dart';
 
 class OnBoardingScreen extends StatelessWidget {
-  OnBoardingScreen({Key? key}) : super(key: key);
+  OnBoardingScreen({super.key});
   PageController controller = PageController();
   @override
   Widget build(BuildContext context) {
@@ -44,41 +45,41 @@ class OnBoardingScreen extends StatelessWidget {
                                   color: AppColors.white.withOpacity(0.44),
                                 ),
                           ))
-                      : const SizedBox(
-                          height: 50,
+                      : SizedBox(
+                          height: 50.h,
                         ),
-                  const SizedBox(
-                    height: 16,
+                  SizedBox(
+                    height: 16.h,
                   ),
                   //Image
                   Image.asset(
                       OnBoardingModel.onBoardingScreen[index].imagePath),
-                  const SizedBox(
-                    height: 16,
+                  SizedBox(
+                    height: 16.h,
                   ),
                   SmoothPageIndicator(
                     controller: controller,
                     count: 3,
-                    effect: const ExpandingDotsEffect(
+                    effect: ExpandingDotsEffect(
                       activeDotColor: AppColors.primary,
                       dotColor: AppColors.white,
-                      dotHeight: 8,
-                      dotWidth: 8,
+                      dotHeight: 8.h,
+                      dotWidth: 8.w,
                       spacing: 8,
                     ),
                   ),
-                  const SizedBox(
-                    height: 52,
+                  SizedBox(
+                    height: 52.h,
                   ),
                   // onboarding title String
                   Text(
                     OnBoardingModel.onBoardingScreen[index].title,
                     style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                          fontSize: 32,
+                          fontSize: 32.sp,
                         ),
                   ),
-                  const SizedBox(
-                    height: 42,
+                  SizedBox(
+                    height: 42.h,
                   ),
                   // onboarding Subtitle String
                   Text(
@@ -87,9 +88,9 @@ class OnBoardingScreen extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .displayMedium!
-                          .copyWith(fontSize: 16)),
-                  const SizedBox(
-                    height: 180,
+                          .copyWith(fontSize: 16.sp)),
+                  SizedBox(
+                    height: 180.w,
                   ),
                   Row(
                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
