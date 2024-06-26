@@ -36,7 +36,7 @@ class TaskModel {
     TaskModel(
         title: "Github",
         startTime: "1:00 AM",
-        endTime: "2:00 AM", 
+        endTime: "2:00 AM",
         note: "Course on github",
         isCompleted: false,
         colorId: 2,
