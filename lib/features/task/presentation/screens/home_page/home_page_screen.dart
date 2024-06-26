@@ -9,6 +9,7 @@ import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_strings.dart';
 import 'package:todo_app/core/widget/custom_elevated_button.dart';
+import 'package:todo_app/features/task/data/model/task_model.dart';
 
 import '../add_task/add_task_screen.dart';
 
@@ -66,61 +67,71 @@ class HomePageScreen extends StatelessWidget {
               SizedBox(
                 height: 24.h,
               ),
-              InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return Container(
-                          height: 240.h,
-                          width: double.infinity.w,
-                          padding: const EdgeInsets.all(24),
-                          color: AppColors.deepGrey,
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 48.h,
-                                width: double.infinity.w,
-                                child: CustomElevatedButton(
-                                    color: AppColors.primary,
-                                    onPressed: () {},
-                                    text: AppStrings.taskCompleted),
-                              ),
-                              SizedBox(
-                                height: 24.h,
-                              ),
-                              SizedBox(
-                                height: 48.h,
-                                width: double.infinity.w,
-                                child: CustomElevatedButton(
-                                    color: AppColors.red,
-                                    onPressed: () {},
-                                    text: AppStrings.deleteTask),
-                              ),
-                              SizedBox(
-                                height: 24.h,
-                              ),
-                              SizedBox(
-                                height: 48.h,
-                                width: double.infinity.w,
-                                child: CustomElevatedButton(
-                                    color: AppColors.primary,
-                                    onPressed: () {},
-                                    text: AppStrings.cancel),
-                              )
-                            ],
-                          ),
-                        );
-                      },
-                    );
-                  },
-                  child: const TaskComponent()),
+              TaskModel.tasksList.isEmpty
+                  ? noTasksWidget(context)
+                  : Expanded(
+                      child: ListView.builder(
+                          itemCount: TaskModel.tasksList.length,
+                          itemBuilder: (context, index) {
+                            return InkWell(
+                                onTap: () {
+                                  showModalBottomSheet(
+                                    context: context,
+                                    builder: (context) {
+                                      return Container(
+                                        height: 240.h,
+                                        width: double.infinity.w,
+                                        padding: const EdgeInsets.all(24),
+                                        color: AppColors.deepGrey,
+                                        child: Column(
+                                          children: [
+                                            SizedBox(
+                                              height: 48.h,
+                                              width: double.infinity.w,
+                                              child: CustomElevatedButton(
+                                                  color: AppColors.primary,
+                                                  onPressed: () {},
+                                                  text:
+                                                      AppStrings.taskCompleted),
+                                            ),
+                                            SizedBox(
+                                              height: 24.h,
+                                            ),
+                                            SizedBox(
+                                              height: 48.h,
+                                              width: double.infinity.w,
+                                              child: CustomElevatedButton(
+                                                  color: AppColors.red,
+                                                  onPressed: () {},
+                                                  text: AppStrings.deleteTask),
+                                            ),
+                                            SizedBox(
+                                              height: 24.h,
+                                            ),
+                                            SizedBox(
+                                              height: 48.h,
+                                              width: double.infinity.w,
+                                              child: CustomElevatedButton(
+                                                  color: AppColors.primary,
+                                                  onPressed: () {},
+                                                  text: AppStrings.cancel),
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                                child: TaskComponent(
+                                  taskModel: TaskModel.tasksList[index],
+                                ));
+                          }))
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            navigate(context: context, screen:  AddTaskScreen());
+            navigate(context: context, screen: AddTaskScreen());
           },
           backgroundColor: AppColors.primary,
           shape: const CircleBorder(),
@@ -162,7 +173,27 @@ class HomePageScreen extends StatelessWidget {
 class TaskComponent extends StatelessWidget {
   const TaskComponent({
     super.key,
+    required this.taskModel,
   });
+  final TaskModel taskModel;
+  Color getColor(int index) {
+    switch (index) {
+      case 0:
+        return AppColors.red;
+      case 1:
+        return AppColors.green;
+      case 2:
+        return AppColors.blueGrey;
+      case 3:
+        return AppColors.blue;
+      case 4:
+        return AppColors.orange;
+      case 5:
+        return AppColors.purple;
+      default:
+        return AppColors.grey;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -170,7 +201,7 @@ class TaskComponent extends StatelessWidget {
       height: 128.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
-        color: AppColors.red,
+        color: getColor(taskModel.colorId),
       ),
       margin: const EdgeInsets.only(bottom: 24),
       child: Padding(
@@ -182,7 +213,7 @@ class TaskComponent extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Task 1',
+                    taskModel.title,
                     style: Theme.of(context).textTheme.displayLarge,
                   ),
                   SizedBox(
@@ -199,7 +230,7 @@ class TaskComponent extends StatelessWidget {
                         width: 8.w,
                       ),
                       Text(
-                        '09:00 AM - 10:00 AM',
+                        '${taskModel.startTime} - ${taskModel.endTime}',
                         style: Theme.of(context).textTheme.displayMedium,
                       )
                     ],
@@ -208,7 +239,7 @@ class TaskComponent extends StatelessWidget {
                     height: 8.h,
                   ),
                   Text(
-                    'Learn Dart',
+                    taskModel.note,
                     style: Theme.of(context).textTheme.displayMedium,
                   ),
                 ],
@@ -224,7 +255,8 @@ class TaskComponent extends StatelessWidget {
             ),
             RotatedBox(
               quarterTurns: 3,
-              child: Text(AppStrings.todo,
+              child: Text(
+                  taskModel.isCompleted ? AppStrings.complete : AppStrings.todo,
                   style: Theme.of(context).textTheme.displayMedium),
             ),
           ],
